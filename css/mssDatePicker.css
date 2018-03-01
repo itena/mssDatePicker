@@ -1,0 +1,190 @@
+.mss-datepicker.opened button:before {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: 13px; }
+
+.mss-datepicker {
+  display: inline-block;
+  position: relative;
+  font-size: 12px; }
+  .mss-datepicker input {
+    width: 100%;
+    line-height: 30px;
+    border: 1px solid #d9dada;
+    display: inline-block;
+    padding: 0 40px 0 10px; }
+  .mss-datepicker button {
+    width: 32px;
+    height: 32px;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    cursor: pointer; }
+    .mss-datepicker button:before {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 9px;
+      height: 9px;
+      border-left: 2px solid #9c9c9c;
+      border-top: 2px solid #9c9c9c;
+      top: 9px;
+      right: 11px;
+      -webkit-transform: rotate(-135deg);
+          -ms-transform: rotate(-135deg);
+              transform: rotate(-135deg);
+      -webkit-transition: all 0.1s ease;
+      -o-transition: all 0.1s ease;
+      transition: all 0.1s ease; }
+  .mss-datepicker .mss-calendar {
+    position: absolute;
+    top: 40px;
+    border: 1px solid #d9dada;
+    min-width: 100%;
+    z-index: 10;
+    background-color: #fff; }
+    .mss-datepicker .mss-calendar .mss-header {
+      text-align: center;
+      padding: 5px 40px;
+      position: relative; }
+      .mss-datepicker .mss-calendar .mss-header .mss-to-prev, .mss-datepicker .mss-calendar .mss-header .mss-to-next {
+        position: absolute;
+        background-color: transparent;
+        top: 5px;
+        bottom: 0;
+        height: auto;
+        width: 30px;
+        height: 30px;
+        -webkit-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
+        transition: all 0.1s ease; }
+        .mss-datepicker .mss-calendar .mss-header .mss-to-prev:before, .mss-datepicker .mss-calendar .mss-header .mss-to-next:before {
+          position: absolute;
+          display: block;
+          content: '';
+          width: 10px;
+          height: 10px;
+          border-left: 2px solid #9c9c9c;
+          border-top: 2px solid #9c9c9c;
+          top: 9px; }
+      .mss-datepicker .mss-calendar .mss-header .mss-to-prev {
+        left: 8px; }
+        .mss-datepicker .mss-calendar .mss-header .mss-to-prev:before {
+          left: 12px;
+          -webkit-transform: rotate(-45deg);
+              -ms-transform: rotate(-45deg);
+                  transform: rotate(-45deg); }
+        .mss-datepicker .mss-calendar .mss-header .mss-to-prev:hover:before {
+          border-color: #181716; }
+      .mss-datepicker .mss-calendar .mss-header .mss-to-next {
+        right: 8px; }
+        .mss-datepicker .mss-calendar .mss-header .mss-to-next:before {
+          right: 12px;
+          -webkit-transform: rotate(135deg);
+              -ms-transform: rotate(135deg);
+                  transform: rotate(135deg); }
+        .mss-datepicker .mss-calendar .mss-header .mss-to-next:hover:before {
+          border-color: #181716; }
+      .mss-datepicker .mss-calendar .mss-header .mss-month, .mss-datepicker .mss-calendar .mss-header .mss-year {
+        display: block;
+        line-height: 30px;
+        -webkit-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
+        transition: all 0.1s ease; }
+    .mss-datepicker .mss-calendar .mss-month, .mss-datepicker .mss-calendar .mss-header-month .mss-year {
+      cursor: pointer; }
+      .mss-datepicker .mss-calendar .mss-month:hover, .mss-datepicker .mss-calendar .mss-header-month .mss-year:hover {
+        background-color: #e9e9e9; }
+  .mss-datepicker .mss-table {
+    border-collapse: collapse;
+    width: 100%; }
+    .mss-datepicker .mss-table td {
+      width: 14.28%;
+      text-align: center;
+      vertical-align: middle;
+      padding: 2px;
+      border: none;
+      font-weight: normal;
+      text-align: center !important; }
+      .mss-datepicker .mss-table td span {
+        display: block;
+        padding: 3px 4px;
+        text-decoration: none;
+        color: #000;
+        cursor: pointer;
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
+        transition: all 0.1s ease; }
+        .mss-datepicker .mss-table td span:hover {
+          background-color: #181716;
+          color: #fff; }
+        .mss-datepicker .mss-table td span.mss-prev, .mss-datepicker .mss-table td span.mss-next {
+          color: #b1b2b3; }
+          .mss-datepicker .mss-table td span.mss-prev:hover, .mss-datepicker .mss-table td span.mss-next:hover {
+            background-color: #181716;
+            color: #fff; }
+    .mss-datepicker .mss-table .mss-weekdays {
+      border-bottom: 1px solid #d9dada; }
+      .mss-datepicker .mss-table .mss-weekdays td {
+        padding-bottom: 10px;
+        color: #9c9c9c; }
+    .mss-datepicker .mss-table .mss-weekend, .mss-datepicker .mss-table .mss-holiday {
+      color: red; }
+      .mss-datepicker .mss-table .mss-weekend.mss-prev, .mss-datepicker .mss-table .mss-weekend.mss-next, .mss-datepicker .mss-table .mss-holiday.mss-prev, .mss-datepicker .mss-table .mss-holiday.mss-next {
+        color: #ff8989; }
+    .mss-datepicker .mss-table .mss-desabled {
+      background-color: #e9e9e9;
+      color: #999;
+      pointer-events: none; }
+      .mss-datepicker .mss-table .mss-desabled.mss-weekend, .mss-datepicker .mss-table .mss-desabled.mss-holiday {
+        color: #ff8989; }
+    .mss-datepicker .mss-table .mss-today {
+      background-color: #e9e9e9; }
+    .mss-datepicker .mss-table tr td:first-child {
+      padding-left: 10px; }
+    .mss-datepicker .mss-table tr td:last-child {
+      padding-right: 10px; }
+    .mss-datepicker .mss-table .mss-days tr:first-child td {
+      padding-top: 10px; }
+    .mss-datepicker .mss-table .mss-days tr:last-child td {
+      padding-bottom: 10px; }
+  .mss-datepicker .mss-months, .mss-datepicker .mss-years {
+    min-width: 170px; }
+    .mss-datepicker .mss-months ul, .mss-datepicker .mss-years ul {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-flex-wrap: wrap;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+      border-top: 1px solid #d9dada;
+      padding: 10px 20px 10px; }
+      .mss-datepicker .mss-months ul li, .mss-datepicker .mss-years ul li {
+        width: 31%;
+        text-align: center;
+        margin-bottom: 5px;
+        padding: 6px 7px;
+        -webkit-border-radius: 5px;
+                border-radius: 5px;
+        cursor: pointer;
+        -webkit-transition: all 0.1s ease;
+        -o-transition: all 0.1s ease;
+        transition: all 0.1s ease; }
+        .mss-datepicker .mss-months ul li:hover, .mss-datepicker .mss-years ul li:hover {
+          background-color: #e9e9e9; }

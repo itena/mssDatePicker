@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" name="SKYPE_TOOLBAR">
+    <title>MSS-DatePicker</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="favicons/manifest.json">
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+    -->
+    <!--link(rel="stylesheet", href="css/libs.min.css")-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mssDatePicker.css">
+    <link rel="stylesheet" href="css/mssDatePicker-themes.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="js/jquery.mssDatePicker.js"></script>
+    <script src="js/common.js"></script>
+  </head>
+  <body>
+    <div class="wide">
+      <h1>Плагин выпадающего календаря для выбора даты</h1>
+      <p>Календарь полностью кастомизируется по оформлению, имеет несколько готовых тем. Кроме этого имеется ряд настроек для более гибкого использования, а также возможность локализации. Изначально имеется русская и английская локализация, но можно добавлять любые другие по не сложному шаблону.</p>
+      <p>Есть несколько режимов работы календаря для упрощения выбора любой произвольной даты:</p>
+      <ul class="ul">
+        <li>режим выбора даты (с прокруткой по месяцам)</li>
+        <li>режим выбора месяца (с прокруткой по годам)</li>
+        <li>режим выбора года (с прокруткой по 10 лет)</li>
+      </ul>
+      <p>Переключение режимов осущетсвляется кликом по заголовочной части календаря. Прокрутка - кликом по навигационным кнопкам (влево и вправо).</p>
+      <p>Если в поле для ввода даты уже введена дата в формате "DD.MM.YYYY", то при вызове календаря он откроется на месяце введенной даты.</p>
+      <p><b>Примеры:</b></p>
+      <p><span>1) Календарь с настройками по умолчяанию.</span>
+        <div class="mss-datepicker" id="datepicker1">
+          <input>
+          <button></button>
+        </div>
+      </p>
+      <p> <span>2) Календарь с кастомизированными настройками и темой оформления "theme-zn-blue".</span>
+        <div class="mss-datepicker theme-zn-blue" id="datepicker2">
+          <input value="25.12.2048">
+          <button></button>
+        </div>
+      </p>
+      <h2>Подключение файлов скриптов и стилей</h2>
+      <p>Сначала подключаем JQuery, затем скрипт плагина и стили:</p>
+      <pre>&lt;script type=&quot;text/javascript&quot; src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery.mssDatePicker.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/mssDatePicker.css&quot;&gt;</pre>
+      <p>Если будут использоваться готовые темы оформления, то подключаем CSS файл с темами:</p>
+      <pre>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/mssDatePicker-themes.css&quot;&gt;</pre>
+      <h2>Установка HTML-кода на страницу</h2>
+      <pre>&lt;div class=&quot;mss-datepicker&quot;&gt;
+  &lt;input&gt;
+  &lt;button&gt;&lt;/button&gt;
+&lt;/div&gt;</pre>
+      <p>Если нужно разместить несколько календарей с разными настройками, то дополнительно присваиваем каждому блоку свой id.</p>
+      <p>Если нужно использоваться готовую тему оформления, то добавляем контейнеру класс темы оформления. </p>
+      <pre>&lt;div class=&quot;mss-datepicker theme-zn-blue&quot;&gt;</pre>
+      <p>Готовые темы оформления:</p>
+      <table class="settings">
+        <thead>
+          <tr>
+            <td>Тема</td>
+            <td>Пример</td>
+          </tr>
+        </thead>
+        <tr>
+          <td>theme-zn-blue</td>
+          <td>			
+            <div class="mss-datepicker theme-zn-blue" id="datepicker3">
+              <input>
+              <button></button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>theme-table</td>
+          <td>			
+            <div class="mss-datepicker theme-table" id="datepicker4">
+              <input>
+              <button></button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <h2>Подключение Javascript</h2>
+      <pre>$(document).ready(function () {
+  $('.mss-datepicker button').on('click', function(){
+    mssDatePicker({
+     lang: 'ru'
+    }, this);
+  });
+});</pre>
+      <p>Если нужно разместить несколько календарей с разными настройками, то вместо селектора <br>"<b>.</b>mss-datepicker" прописываем нужный селектор id и задаем настройки для каждого календаря отдельно.</p>
+      <h2>Настройки</h2>
+      <table class="settings">
+        <thead>
+          <tr>
+            <td>Свойство</td>
+            <td>Тип значения</td>
+            <td>Значение по умолчанию</td>
+            <td>Описание</td>
+          </tr>
+        </thead>
+        <tr>
+          <td>lang</td>
+          <td>string</td>
+          <td>"en"</td>
+          <td>Язык локализации (изначально имеется русская - "ru" и английская - "en" локализация)</td>
+        </tr>
+        <tr>
+          <td>weekStart</td>
+          <td>number</td>
+          <td>0</td>
+          <td>С какого дня начинается неделя (0 - Вс, 1 - Пн и т.д.)</td>
+        </tr>
+        <tr>
+          <td>dateSeparator</td>
+          <td>string</td>
+          <td>"."</td>
+          <td>Разделитель групп разрядов даты при выводе в поле</td>
+        </tr>
+        <tr>
+          <td>yearInHead</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Отображать в заголовке календаря год</td>
+        </tr>
+        <tr>
+          <td>markWeekends</td>
+          <td>boolean</td>
+          <td>false</td>
+          <td>Выделять выходные дни красным цветом (если true, то выходным дням в календаре присваивается класс ".mss-weekend")</td>
+        </tr>
+        <tr>
+          <td>markToday</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Выделять сегодняшний день (если true, то сегодняшнему дню в календаре присваивается класс ".mss-today")</td>
+        </tr>
+        <tr>
+          <td>monthShort</td>
+          <td>boolean</td>
+          <td>true</td>
+          <td>Использовать в режиме выбора месяца укороченные названия месяцев (3-4 символа)</td>
+        </tr>
+        <tr>
+          <td>holidays</td>
+          <td>array[string]</td>
+          <td>- </td>
+          <td>Массив праздничных дней в формате: <br>
+            <ul class="ul">
+              <li>номер дня недели (0 - Вс)</li>
+              <li>либо дата в формате "D.M" - сработает каждый год</li>
+              <li>либо дата в формате "D.M.YYYY" - сработает 1 раз</li>
+              <li>либо диапазон дат в формате "D.M.YYYY-D.M.YYYY"</li>
+            </ul>Выбранным дням в календаре присваивается класс ".mss-holiday")
+          </td>
+        </tr>
+        <tr>
+          <td>desabled</td>
+          <td>array[string]</td>
+          <td>- </td>
+          <td>Массив отключенных дней (которые нельзя выбрать) в формате: <br>
+            <ul class="ul">
+              <li>номер дня недели (0 - Вс)</li>
+              <li>либо дата в формате "D.M" - сработает каждый год</li>
+              <li>либо дата в формате "D.M.YYYY" - сработает 1 раз</li>
+              <li>либо диапазон дат в формате "D.M.YYYY-D.M.YYYY"</li>
+            </ul>Выбранным дням в календаре присваивается класс ".mss-desabled")
+          </td>
+        </tr>
+      </table>
+      <h2>Над плагином работали: </h2>
+      <p>Программист: Сергей Мармелюк<br>Дизайнер: Алексей Ремняков</p>
+      <p>01.03.2018</p>
+    </div>
+  </body>
+</html>
