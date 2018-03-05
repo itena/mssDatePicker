@@ -11,7 +11,7 @@ function mssDatePickerInput(){
 			markToday: false,	
 			markWeekends: true,
 			holidays: ['1.1','2.1','3.1','4.1','5.1','7.1','23.2','8.3','1.5','9.5','12.6','4.11'],		
-			desabled: ['18.2.2019', '0', '23.02.2018-8.3.2018']			
+			desabled: ['18.2.2019', '0', '23.02.2018-8.3.2018'],	
 		}, this);
 	});
 	$('#datepicker3 button').on('click', function(){

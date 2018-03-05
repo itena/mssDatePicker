@@ -297,9 +297,21 @@ function GetDateStrHTML(settings, date, curMonthDate){
 	className += GetClassForArray(settings.holidays, date, 'mss-holiday');
 	className += GetClassForArray(settings.desabled, date, 'mss-desabled');
 
+	// Присвоение класса отключенным дням при указании параметров startDate и endDate
+	if(settings.startDate){
+		var startD = GetDateFromString(settings.startDate);
+		var endD = GetDateFromString(settings.endDate);
+		if(date.getTime() < startD || date.getTime() > endD){
+			if(className.indexOf("mss-desabled") == -1){
+				className += ' mss-desabled';
+			}
+		}
+	}
+
 	var str = '<td><span class="' + className + '">' + date.getDate() + '</span></td>';
 	return str;
 }
+
 
 
 // Возвращает имя класса по параметрам из массива
@@ -357,9 +369,14 @@ function SetNullTime(date){
 	return date;
 }
 
+// Возвращает дату из строки формата "D.M.YYYY"
+function GetDateFromString(str){
+	return GetDateFromArray(str.split('.'));
+}
+
 // Возвращает дату из массива ['D','M','YYYY']
 function GetDateFromArray(arr){
-	return new Date(parseInt(arr[2]), parseInt(arr[1]) - 1, parseInt(arr[0]));
+	return new Date(parseInt(arr[2]), parseInt(arr[1]) - 1, parseInt(arr[0]), 0, 0, 0, 0);
 }
 
 // Закрывает календарь
@@ -382,7 +399,7 @@ function SetDefaultSettings(pSettings){
 		dateSeparator: '.',		// Разделитель групп разрядов в дате
 		timeSeparator: ':',		// Разделитель групп разрядов времени
 		yearInHead: true,			// Отображать в заголовке год
-		markWeekends: false,		// Выделять выходные дни красным
+		markWeekends: false,	// Выделять выходные дни красным
 		markToday: true,			// Выделять сегодняшний день
 		monthShort: true,			// Использовать в режиме выбора месяца укороченные названия месяцев
 		holidays: [],					// Массив праздничных дней в формате
@@ -390,7 +407,9 @@ function SetDefaultSettings(pSettings){
 														// либо дата в формате 'D.M' - сработает каждый год
 														// либо дата в формате 'D.M.YYYY' - сработает 1 раз
 														// либо диапазон дат в формате 'D.M.YYYY-D.M.YYYY'
-		desabled: []					// Массив отключенных дней. Формат как у праздников
+		desabled: [],					// Массив отключенных дней. Формат как у праздников
+		startDate: "",				// Дата начала активного периода
+		endDate: ""						// Дата окончания активного периода
 	};
 	if(pSettings.lang != undefined) settings.lang = pSettings.lang;
 	if(pSettings.weekStart != undefined) settings.weekStart = pSettings.weekStart;
@@ -402,6 +421,8 @@ function SetDefaultSettings(pSettings){
 	if(pSettings.monthShort != undefined) settings.monthShort = pSettings.monthShort;
 	if(pSettings.holidays != undefined) settings.holidays = pSettings.holidays;
 	if(pSettings.desabled != undefined) settings.desabled = pSettings.desabled;
+	if(pSettings.startDate != undefined) settings.startDate = pSettings.startDate;
+	if(pSettings.endDate != undefined) settings.endDate = pSettings.endDate;
 
 	return settings;
 }
